@@ -8,7 +8,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun FakeComposablePReviewForViewModelContent(modifier: Modifier = Modifier) {
+    Content(FakeScreen.UiState(data = "this is success"))
+}
 
 
 @Composable
@@ -17,6 +27,11 @@ fun FakeComposablePreviewForViewModel(
     fakeViewModel: FakeViewModel
 ) {
     val uiState by fakeViewModel.uiState.collectAsStateWithLifecycle()
+    Content(uiState = uiState)
+}
+
+@Composable
+fun Content(uiState: FakeScreen.UiState) {
     if (uiState.isLoading) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Center) {
             CircularProgressIndicator()
@@ -35,4 +50,5 @@ fun FakeComposablePreviewForViewModel(
         }
     }
 }
+
 

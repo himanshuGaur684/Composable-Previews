@@ -1,5 +1,6 @@
 package gaur.himanshu.previews.normal
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,9 +16,32 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import gaur.himanshu.previews.R
+import gaur.himanshu.previews.ui.theme.PreviewsTheme
 
+
+@MultiplePreview
+@Composable
+fun CardItemPreview(modifier: Modifier = Modifier) {
+    PreviewsTheme {
+        CardItem()
+    }
+}
+
+
+@Preview(
+    name = "virat kohli",
+    showBackground = true,
+    showSystemUi = true,
+    apiLevel = 33,
+    fontScale = 1f,
+    device = Devices.PIXEL_XL,
+    group = "",
+    locale = "en",
+)
 @Composable
 fun CardItem(modifier: Modifier = Modifier) {
     Card(
@@ -51,3 +75,16 @@ fun CardItem(modifier: Modifier = Modifier) {
 
 
 }
+
+
+@Preview(showBackground = true,
+    showSystemUi = true,
+    name = "day",
+    uiMode = Configuration.UI_MODE_NIGHT_NO
+)
+@Preview(showBackground = true,
+    showSystemUi = true,
+    name = "night",
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+annotation class MultiplePreview
